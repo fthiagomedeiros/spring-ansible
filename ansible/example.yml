@@ -1,0 +1,13 @@
+---
+- name: Write hostname
+  hosts: 127.0.0.1
+  vars:
+    version_number: '1.0'
+    server: 'Ubuntu'
+  vars_files:
+    - ./vars/uat.yml
+  tasks:
+    - name: write server info using jinja2
+      ansible.builtin.template:
+        src: ./templates/example_template.j2
+        dest: ../src/main/resources/application.yml

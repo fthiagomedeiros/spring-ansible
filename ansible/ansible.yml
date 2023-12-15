@@ -1,13 +1,8 @@
 ---
 - hosts: webservers
   vars:
-    springboot_application_name: spring-boot-sample
-    api_env: ./vars
+    springboot_application_name: 'application name'
   connection: local
   tasks:
     - name: Run jar
       shell: java -jar ../build/libs/spring-ansible-0.0.1-SNAPSHOT.jar
-    - name: write hostname using jinja2
-      ansible.builtin.template:
-        src: configuration.j2
-        dest: ../application.properties
