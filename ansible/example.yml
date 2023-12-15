@@ -5,9 +5,9 @@
     version_number: '1.0'
     server: 'Ubuntu'
   vars_files:
-    - ./vars/{{ env }}.yml
+    - ./vars/{{ filename }}.yml
   tasks:
-    - name: write server info using jinja2
+    - name: write application properties in jinja2
       ansible.builtin.template:
         src: ./templates/example_template.j2
         dest: ../src/main/resources/application.yml
