@@ -1,1 +1,6 @@
 api_env: PROD
+
+
+db_username: PROD-DB-username
+db_password: PROD-DB-password
+db_connection_string: jdbc:postgresql://localhost:5432/schema_prod

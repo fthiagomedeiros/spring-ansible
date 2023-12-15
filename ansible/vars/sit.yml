@@ -1,1 +1,6 @@
 api_env: SIT
+
+
+db_username: SIT-DB-username
+db_password: SIT-DB-password
+db_connection_string: jdbc:postgresql://localhost:5432/schema_sit

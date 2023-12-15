@@ -1,1 +1,5 @@
 api_env: UAT
+
+db_username: UAT-DB-username
+db_password: UAT-DB-password
+db_connection_string: jdbc:postgresql://localhost:5432/schema_uat

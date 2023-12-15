@@ -1,2 +1,20 @@
 api:
   env: {{ api_env }}
+
+spring:
+  datasource:
+    username: {{ db_username }}
+    password: {{ db_password }}
+    url: {{ db_connection_string }}
+
+  jpa:
+    show-sql: true
+    generate-ddl: true
+
+    hibernate:
+      ddl-auto: validate
+
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true

@@ -1,1 +1,5 @@
 api_env: DEV
+
+db_username: DEV-DB-username
+db_password: DEV-DB-password
+db_connection_string: jdbc:postgresql://localhost:5432/schema_dev
