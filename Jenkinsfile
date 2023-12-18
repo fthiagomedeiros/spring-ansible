@@ -1,7 +1,7 @@
 pipeline {
     agent any
     tools {
-        maven 'mvn'
+        maven 'gradle'
         //version 3.0.5
     }
     parameters {
@@ -15,11 +15,11 @@ pipeline {
           stage('unit test') {
             steps {
                 echo "Environment selected: ${params.envSelected}"
-                sh 'mvn test -Punit-tests'
+                sh 'gradle test -Punit-tests'
             }
             post {
                 failure {
-                    mail to: 'vivek.sinless@gmail.com',
+                    mail to: 'fthiagomedeiros@gmail.com',
                         subject: 'Dude your Azuga-RUC Pipeline failed. Check your Unit Tests',
                         body: 'Unit Test Cases Failure'
                 }
@@ -28,7 +28,7 @@ pipeline {
           stage('integration test') {
             steps {
                 echo "Environment selected: ${params.envSelected}"
-                sh 'mvn test -Pintegration-tests'
+                sh 'gradle test -Pintegration-tests'
             }
             post {
                 failure {
