@@ -1,6 +1,6 @@
 FIRST RUN:
 
-ansible-playbook -e "name = sit" ./ansible/example.yml
+ansible-playbook -e filename=sit ./ansible/example.yml
 
 SECONDLY:
 
