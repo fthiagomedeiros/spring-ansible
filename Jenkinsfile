@@ -38,9 +38,8 @@ pipeline {
 //                         echo 'triggered by dev or test'
 //                         def ansibleCommand = ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
 
-                        def ansibleCommand = """
-                                        ansible-playbook -i ./ansible/inventory.ini ./ansible/ansible.yml
-                                    """
+                        def ansibleCommand = ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
+
                         def asyncTask = sh(script: ansibleCommand, returnStatus: true, background: true)
                         waitUntil {
                             return sh(script: "ansible-playbook -i inventory --async-status ${asyncTask} | grep -q 'exited'", returnStatus: true) == 0
