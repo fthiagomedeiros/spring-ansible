@@ -35,8 +35,17 @@ pipeline {
             steps {
                 script {
                     if (env.envSelected == "dev" || env.envSelected == "test") {
-                        echo 'triggered by dev or test'
-                        ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
+                        //echo 'triggered by dev or test'
+                        //ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
+
+                            def ansibleCommand = """
+                                ansible-playbook -i ./ansible/inventory.ini ./ansible/ansible.yml
+                            """
+                            def asyncTask = sh(script: ansibleCommand, returnStatus: true, background: true)
+                            waitUntil {
+                                return sh(script: "ansible-playbook -i ./ansible/inventory.ini --async-status ${asyncTask} | grep -q 'exited'", returnStatus: true) == 0
+                            }
+
                     } else {
                         echo 'triggered by prod'
                         input "Continue Deployment to Prod ? Are you Sure ?"
