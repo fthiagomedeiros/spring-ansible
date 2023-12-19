@@ -27,7 +27,9 @@ pipeline {
             }
           }
           stage('Generate properties') {
+           steps {
              ansiblePlaybook installation: 'ansible2', extras: "-e filename=${params.envSelected}", playbook: './ansible/example.yml', disableHostKeyChecking: true
+            }
           }
           stage('Run Spring Boot App') {
             steps {
