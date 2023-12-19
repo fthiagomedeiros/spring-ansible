@@ -11,7 +11,7 @@ pipeline {
           stage('unit test') {
             steps {
                 echo "Environment selected: ${params.envSelected}"
-                sh 'gradle test -Punit-tests'
+                sh './gradlew test'
             }
             post {
                 failure {
@@ -24,7 +24,7 @@ pipeline {
           stage('integration test') {
             steps {
                 echo "Environment selected: ${params.envSelected}"
-                sh 'gradle test -Pintegration-tests'
+                sh './gradlew build'
             }
             post {
                 failure {
@@ -47,7 +47,7 @@ pipeline {
           }
           stage('Build Jars') {
             steps {
-                sh 'mvn clean package'
+                sh './gradlew build'
             }
           }
           stage('Run Spring Boot App') {
