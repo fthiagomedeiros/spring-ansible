@@ -5,4 +5,4 @@
   connection: local
   tasks:
     - name: Run jar
-      shell: ls & java -jar ../build/libs/spring-ansible-0.0.1-SNAPSHOT.jar
+      shell: nohup java -jar ../build/libs/spring-ansible-0.0.1-SNAPSHOT.jar &
