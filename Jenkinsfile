@@ -31,11 +31,11 @@ pipeline {
                 script {
                     if (env.envSelected == "dev" || env.envSelected == "test") {
                         echo 'triggered by dev or test'
-                        ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.inv', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
+                        ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
                     } else {
                         echo 'triggered by prod'
                         input "Continue Deployment to Prod ? Are you Sure ?"
-                        ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.inv', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
+                        ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
                         // check below code for IP ssh based deployment
                         // for different Ips
                         // IP address and role goes in dev.inv
