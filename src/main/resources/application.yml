@@ -1,5 +1,7 @@
 api:
   env: DEV
+server:
+  port: 9091
 
 spring:
   datasource:

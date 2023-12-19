@@ -1,4 +1,5 @@
 api_env: DEV
+server_port: 8081
 
 db_username: DEV-DB-username
 db_password: DEV-DB-password
