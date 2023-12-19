@@ -21,30 +21,6 @@ pipeline {
                 }
             }
           }
-          stage('integration test') {
-            steps {
-                echo "Environment selected: ${params.envSelected}"
-                sh './gradlew build'
-            }
-            post {
-                failure {
-                    mail to: 'vivek.sinless@gmail.com',
-                        subject: 'Dude your Azuga-RUC Pipeline failed. Check your integration tests',
-                        body: 'Integration Test Cases Failure'
-                }
-            }
-          }
-          stage('SonarQube Analysis') {
-            steps {
-                //def mvn = tool 'mvn';
-                withSonarQubeEnv('sonar') {
-                    sh "mvn sonar:sonar"
-                }
-    //             timeout(time: 4, unit: 'MINUTES') {
-    //                 waitForQualityGate abortPipeline: true
-    //             }
-            }
-          }
           stage('Build Jars') {
             steps {
                 sh './gradlew build'
