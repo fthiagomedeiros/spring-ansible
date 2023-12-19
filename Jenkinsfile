@@ -1,9 +1,5 @@
 pipeline {
     agent any
-    tools {
-        maven 'gradle'
-        //version 3.0.5
-    }
     parameters {
         choice(
             name: 'envSelected',
