@@ -3,7 +3,7 @@ pipeline {
     parameters {
         choice(
             name: 'envSelected',
-            choices: ['dev', 'test', 'prod'],
+            choices: ['dev', 'sit', 'uat', 'prod'],
             description: 'Please choose en environment where you want to run?'
         )
     }
@@ -25,6 +25,9 @@ pipeline {
             steps {
                 sh './gradlew build'
             }
+          }
+          stage('Generate properties') {
+             ansiblePlaybook installation: 'ansible2', extras: "-e filename=${params.envSelected}", playbook: './ansible/example.yml', disableHostKeyChecking: true
           }
           stage('Run Spring Boot App') {
             steps {
@@ -48,7 +51,7 @@ pipeline {
                         // ansiblePlaybook crendeitalsId: 'private-key', installation: 'ansible2', inventory: 'dev.inv', playbook: 'ansible.yml', disableHostKeyChecking: true
                     }
                 }
-}
+             }
           }
     }
 }
