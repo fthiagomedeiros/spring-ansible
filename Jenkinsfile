@@ -54,6 +54,14 @@ pipeline {
                     }
                 }
              }
+             post {
+                success {
+                    echo 'Playbook executed successfully!'
+                }
+                failure {
+                    echo 'Playbook execution failed!'
+                }
+             }
           }
     }
 }
