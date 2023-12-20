@@ -42,7 +42,7 @@ pipeline {
                         ansiblePlaybook installation: 'ansible2',
                         inventory: './ansible/inventory.ini',
                         playbook: './ansible/ansible.yml',
-                        extras: '-e filename=${params.envSelected}'
+                        extras: '-e filename=${params.envSelected} other=test'
                         disableHostKeyChecking: true
 
 //                             def ansibleCommand = """
