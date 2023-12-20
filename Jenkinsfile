@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     if (env.envSelected != "prod" || env.envSelected != "uat") {
-                        echo 'triggered by dev or sit'
+                        echo 'triggered by DEV OR SIT ENVIRONMENT'
                         //ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
 
                             def ansibleCommand = """
@@ -47,7 +47,7 @@ pipeline {
                             }
 
                     } else {
-                        echo 'triggered by prod'
+                        echo 'triggered by PROD OR UAT ENVIRONMENT'
                         input "Continue Deployment to Prod ? Are you Sure ?"
                         ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
                     }
