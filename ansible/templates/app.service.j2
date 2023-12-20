@@ -3,7 +3,7 @@ Description=Minha Aplicacao Spring Boot
 
 [Service]
 ExecStart=/usr/bin/java -jar {{ app_deploy_dir }}/{{ app_jar }}
-User=seu_usuario
+User=thiago
 WorkingDirectory={{ app_deploy_dir }}
 SuccessExitStatus=143
 
