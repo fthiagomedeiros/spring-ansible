@@ -8,5 +8,7 @@
 #      copy:
 #        src: ../build/libs/spring-ansible-0.0.1-SNAPSHOT.jar
 #        dest:  $HOME/app
+    - name: build the project
+      shell: ./gradlew build
     - name: Run jar
       shell: java -jar ../build/libs/spring-ansible-0.0.1-SNAPSHOT.jar

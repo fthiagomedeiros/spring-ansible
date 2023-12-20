@@ -26,11 +26,6 @@ pipeline {
              ansiblePlaybook installation: 'ansible2', extras: "-e filename=${params.envSelected}", playbook: './ansible/example.yml', disableHostKeyChecking: true
             }
           }
-          stage('Build Jars') {
-            steps {
-                sh './gradlew build'
-            }
-          }
           stage('Run Spring Boot App') {
             steps {
                 script {
