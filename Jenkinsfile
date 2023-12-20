@@ -40,7 +40,7 @@ pipeline {
                         ansiblePlaybook installation: 'ansible2',
                         inventory: './ansible/inventory.ini',
                         playbook: './ansible/ansible.yml',
-                        extras: '-e @password.yml --vault-password-file=/home/thiago/vault.txt'
+                        extras: '-e @password.yml --vault-password-file=/var/lib/jenkins/vault.txt'
                         disableHostKeyChecking: true
 
                     } else {
