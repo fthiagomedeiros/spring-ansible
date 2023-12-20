@@ -41,8 +41,8 @@ pipeline {
                         echo 'triggered by dev or sit'
                         ansiblePlaybook installation: 'ansible2',
                         inventory: './ansible/inventory.ini',
-                        extras: '-e filename=${params.envSelected} username=${USERNAME}'
                         playbook: './ansible/ansible.yml',
+                        extras: '-e filename=${params.envSelected} username=${USERNAME}'
                         disableHostKeyChecking: true
 
 //                             def ansibleCommand = """
