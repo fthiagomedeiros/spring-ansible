@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     if (env.envSelected != "prod" || env.envSelected != "uat") {
-                        echo 'triggered by DEV OR SIT ENVIRONMENT'
+                        echo 'triggered by DEV OR SIT'
 
                         ansiblePlaybook installation: 'ansible2',
                         inventory: './ansible/inventory.ini',
