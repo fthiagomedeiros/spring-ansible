@@ -36,20 +36,20 @@ pipeline {
                 script {
                     if (env.envSelected != "prod" || env.envSelected != "uat") {
                         echo 'triggered by DEV OR SIT ENVIRONMENT'
-                        //ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
 
-                            def ansibleCommand = """
-                                ansible-playbook -i ./ansible/inventory.ini ./ansible/ansible.yml
-                            """
-                            def asyncTask = sh(script: ansibleCommand, returnStatus: true, background: true)
-                            waitUntil {
-                                return sh(script: "ansible-playbook -i ./ansible/inventory.ini --async-status ${asyncTask} | grep -q 'exited'", returnStatus: true) == 0
-                            }
+                        ansiblePlaybook installation: 'ansible2',
+                        inventory: './ansible/inventory.ini',
+                        playbook: './ansible/ansible.yml',
+                        disableHostKeyChecking: true
 
                     } else {
                         echo 'triggered by PROD OR UAT ENVIRONMENT'
                         input "Continue Deployment to Prod ? Are you Sure ?"
-                        ansiblePlaybook installation: 'ansible2', inventory: './ansible/inventory.ini', playbook: './ansible/ansible.yml', disableHostKeyChecking: true
+
+                        ansiblePlaybook installation: 'ansible2',
+                        inventory: './ansible/inventory.ini',
+                        playbook: './ansible/ansible.yml',
+                        disableHostKeyChecking: true
                     }
                 }
              }
