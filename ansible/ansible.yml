@@ -1,6 +1,7 @@
 ---
 - hosts: webservers
   become: true
+  connection: local
   vars:
     springboot_application_name: 'application name'
   tasks:
