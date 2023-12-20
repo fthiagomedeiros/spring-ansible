@@ -3,10 +3,9 @@
   vars:
     app_name: 'Ansible POC App'
     app_version: 1.0.0
-    username: thiago
     app_jar: spring-ansible-0.0.1-SNAPSHOT.jar
     app_source_dir: ../build/libs
-    app_deploy_dir: /home/{{ username }}
+    app_deploy_dir: /home/thiago
   connection: local
   tasks:
     - name: Copy JAR file
