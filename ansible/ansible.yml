@@ -4,7 +4,7 @@
   vars:
     app_name: 'Ansible POC App'
     app_version: 1.0.0
-    username: thiago
+    username: {{ username }}
     app_source_dir: ../build/libs
     app_deploy_dir: /home/{{ username }}
   connection: local
