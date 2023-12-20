@@ -1,5 +1,6 @@
 ---
 - hosts: webservers
+  become: yes
   vars:
     app_name: 'Ansible POC App'
     app_version: 1.0.0
