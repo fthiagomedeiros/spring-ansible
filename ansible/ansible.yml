@@ -1,8 +1,13 @@
 ---
 - hosts: webservers
+  become: yes
   vars:
     springboot_application_name: 'application name'
-  connection: local
   tasks:
+    - name: Copy the jar file
+      copy:
+        src: ../build/libs/spring-ansible-0.0.1-SNAPSHOT.jar
+        dest:  $HOME/app
+
     - name: Run jar
       shell: java -jar ../build/libs/spring-ansible-0.0.1-SNAPSHOT.jar
